@@ -33,11 +33,24 @@ class _HomeScreenState extends State<HomeScreen> {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
+        appBar: appBar(),
         body: SafeArea(child: body()),
       ),
     );
   }
 
+
+  //region AppBar
+  AppBar appBar(){
+    return AppBar(
+      title: Text("Open AI"),
+      actions: [
+        CupertinoButton(child:Icon(Icons.key,color: Colors.white,), onPressed: (){}),
+      ],
+
+    );
+  }
+  //endregion
 
   //region Body
 Widget body(){
@@ -92,9 +105,10 @@ Widget questionField(){
       child: Row(
         children: [
           Expanded(
-            child: TextField(
+            child: TextFormField(
               controller: homeBloc.searchTextCtrl,
               decoration: InputDecoration(
+                hintText: "Ask anything",
                 filled: true,
                 fillColor: Colors.blue.withOpacity(0.2),
                 border: OutlineInputBorder(
@@ -102,6 +116,7 @@ Widget questionField(){
                     borderRadius: BorderRadius.circular(50)
                 ),
               ),
+              textCapitalization: TextCapitalization.sentences,
             ),
           ),
           CupertinoButton(child:Icon(Icons.send), onPressed:(){

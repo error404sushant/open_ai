@@ -93,7 +93,7 @@ void speak({required String data})async{
   flutterTts.stop();
   flutterTts.setPitch(1);
   flutterTts.speak(data);
-  //Scroll down to the end of list
+  // Scroll down to the end of list
   if(scrollCtrl.hasClients){
     scrollCtrl.animateTo(scrollCtrl.position.maxScrollExtent,duration: const Duration(milliseconds: 300),curve: Curves.easeOut,);//Api call
 
